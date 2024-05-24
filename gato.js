@@ -17,8 +17,7 @@ let contJugadorA = document.getElementById("contJugadorA")
 let contJugadorB = document.getElementById("contJugadorB")
 let btnReiniciar = document.getElementById("btnReiniciar")
 
-contJugadorA.innerHTML = "0";
-contJugadorB.innerHTML = "0";
+
 
 //crear una variable que cuente los turnos, el cual debe iniciar en 0
 let contadorTurnos = 0;
