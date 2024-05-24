@@ -57,15 +57,28 @@ body{
     background-color: #EFEBCE;
 }
 
-.contA{
-    display: flex;
-    
 
+.contadorA{
+    display: flex;
+    flex-direction: column;
+    span{
+        position: absolute;
+        bottom: -50px;
+        left: 70px;
+        font-weight: bolder;
+    }
+}
+.contadorB{
+    display: flex;
+    flex-direction: column;
+    span{
+        position: absolute;
+        bottom: -50px;
+        left: 70px;
+        font-weight: bolder;
+    }
 }
 
-.contB{
-    display: flex;
-}
 
 
 
