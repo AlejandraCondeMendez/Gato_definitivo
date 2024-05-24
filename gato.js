@@ -100,7 +100,7 @@ con el if y si la posición 1 es igual a la posición 3, retorna true y sino ret
             alert ("GANASTE" + array[posicion1].innerHTML) /*gana + la posición 1 (ya que la 2 y 3 son iguales)*/
             if (array[posicion1].innerHTML == "💻") {
                 contJugadorA.innerHTML = parseInt(contJugadorA.innerHTML) + 1;
-                if (contJugadorA.innerHTML == 4) {
+                if (contJugadorA.innerHTML == 3) {
                     alert ("La partida se va a reiniciar")
                     contJugadorA.innerHTML = 0;
                     reiniciar()
@@ -109,7 +109,7 @@ con el if y si la posición 1 es igual a la posición 3, retorna true y sino ret
     
             if (array[posicion1].innerHTML == "🎶") {
                 contJugadorB.innerHTML = parseInt(contJugadorB.innerHTML) + 1;
-                if (contJugadorB.innerHTML == 4) {
+                if (contJugadorB.innerHTML == 3) {
                     alert ("La partida se va a reiniciar")
                     contJugadorB.innerHTML = 0;
                     reiniciar()
