@@ -126,6 +126,8 @@ con el if y si la posición 1 es igual a la posición 3, retorna true y sino ret
 //función de empate: si contador turnos es igual (== validación) llega a 9 y el juego ganador es falso poner una alerta de empate
 function juegoEmpate() {
     if (contadorTurnos == 9 && !juegoGanador()) {
+        contJugadorA.innerHTML = 0;
+        contJugadorB.innerHTML = 0;
         alert ("Empate")
     }
 }
