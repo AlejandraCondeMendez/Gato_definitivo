@@ -8,7 +8,19 @@
 </head>
 <body>
 
-    <div id="tableroJuego" class="titulo"><strong>Juego del gato</strong></div>
+<!--Talero que va a contener las jugadas-->
+
+<div>
+  <label class="jugadorA"><strong>Juegador 💻</strong>
+    <span class="contA" id="contJugadorA"><strong>0</strong></span>
+  </label>
+  <label class="jugadorB"> <strong>Jugador 🎶</strong>
+    <span class="contB" id="contJugadorB"> <strong>0</strong></span>
+  </label>
+</div>
+
+<!--Tablero que contiene el juego-->
+    <div id="tableroJuego" class="titulo"><strong>JUEGO DEL GATO</strong></div>
     <div class="contenedor-btn">
       <button class="fila-botones" id="botonA"></button>
       <button class="fila-botones" id="botonB"></button>
@@ -20,6 +32,8 @@
       <button class="fila-botones" id="botonH"></button>
       <button class="fila-botones" id="botonI"></button>
     </div>
+
+    <button class="botonR" id="btnReiniciar">Reiniciar partida</button>
 
     <script src="./gato.js"></script>
 </body>
