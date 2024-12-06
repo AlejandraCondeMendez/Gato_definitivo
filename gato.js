@@ -17,14 +17,16 @@ let contJugadorA = document.getElementById("contJugadorA")
 let contJugadorB = document.getElementById("contJugadorB")
 let btnReiniciar = document.getElementById("btnReiniciar")
 
-
+// Inicializar los contadores si están vacíos
+contJugadorA.innerHTML = parseInt(contJugadorA.innerHTML) || 0;
+contJugadorB.innerHTML = parseInt(contJugadorB.innerHTML) || 0;
 
 //crear una variable que cuente los turnos, el cual debe iniciar en 0
 let contadorTurnos = 0;
 
 /*crear una constante (no va a cambiar el valor) que contenga el emoji de cada jugador y una función
 que reciba los parámetros turno y posición, donde a posición va ser igual al parámetro turno*/
-const TURNOS = ["💻","🎶"]
+const TURNOS = ["🧙‍♂️","🪄"]
 
 function jugadorA(turno,pos) {
     pos.innerHTML = turno;
@@ -48,8 +50,6 @@ function juego() {
                 jugadorB(); /*si jugadorB gana se deshabilita sino empate*/
                 if (juegoGanador()) {
                     array.forEach(arre => arre.setAttribute("disabled", true))
-                } else {
-                    juegoEmpate()
                 }
             }
         }       
@@ -75,7 +75,6 @@ function jugadorB() {
        }
 }
 
-juego()
 
 /* crear una función que contenga las posiciones ganadoras*/
 function juegoGanador() {
@@ -94,26 +93,26 @@ posiciones ganadoras consta de tres posiciones. Luego con el if hacemos la condi
 array (contiene todas las posiciones) tiene algo sigue con el if y si la posición 1 es igual a la posición 2, sigue
 con el if y si la posición 1 es igual a la posición 3, retorna true y sino retorna false */
     for (const iterador of posicionesGanadoras) {
-    [posicion1, posicion2, posicion3] = iterador
-        if (array[posicion1].innerHTML && array[posicion1].innerHTML == array[posicion2].innerHTML && array[posicion1].innerHTML == array[posicion3].innerHTML) {
-            alert ("GANASTE" + array[posicion1].innerHTML) /*gana + la posición 1 (ya que la 2 y 3 son iguales)*/
-            if (array[posicion1].innerHTML == "💻") {
+    let [posicion1, posicion2, posicion3] = iterador
+        if (array[posicion1].innerHTML && 
+            array[posicion1].innerHTML == array[posicion2].innerHTML && 
+            array[posicion1].innerHTML == array[posicion3].innerHTML) {
+                
+                alert ("GANASTE" + array[posicion1].innerHTML) /*gana + la posición 1 (ya que la 2 y 3 son iguales)*/
+            
+            if (array[posicion1].innerHTML == "🧙‍♂️") {
                 contJugadorA.innerHTML = parseInt(contJugadorA.innerHTML) + 1;
-                if (contJugadorA.innerHTML == 3) {
-                    alert ("La partida se va a reiniciar")
-                    contJugadorA.innerHTML = 0;
-                    contJugadorB.innerHTML = 0;
-                    reiniciar()
+                if (parseInt(contJugadorA.innerHTML) === 3) {
+                    setTimeout(()=> alert("La partida se va a reiniciar"), 100)
+                    reiniciar(true)
                 }
             } /*validamos si es el jugadorA agregar el puntaje (parseInt de texto a número*/
     
-            if (array[posicion1].innerHTML == "🎶") {
+            else if (array[posicion1].innerHTML == "🪄") {
                 contJugadorB.innerHTML = parseInt(contJugadorB.innerHTML) + 1;
-                if (contJugadorB.innerHTML == 3) {
-                    alert ("La partida se va a reiniciar")
-                    contJugadorA.innerHTML = 0;
-                    contJugadorB.innerHTML = 0;
-                    reiniciar()
+                if (parseInt(contJugadorB.innerHTML) === 3) {
+                    setTimeout(()=> alert("La partida se va a reiniciar"), 100)
+                    reiniciar(true)
                 }
             }
             return true
@@ -125,19 +124,23 @@ con el if y si la posición 1 es igual a la posición 3, retorna true y sino ret
 //función de empate: si contador turnos es igual (== validación) llega a 9 y el juego ganador es falso poner una alerta de empate
 function juegoEmpate() {
     if (contadorTurnos == 9 && !juegoGanador()) {
-        contJugadorA.innerHTML = 0;
-        contJugadorB.innerHTML = 0;
         alert ("Empate")
+        reiniciar()
     }
 }
 
 btnReiniciar.addEventListener("click", function () {
-    reiniciar()
+    reiniciar(false)
 })
 
-function reiniciar() {
+function reiniciar(resetCounter=false) {
     array.forEach(elemento => elemento.innerHTML = "");
     array.forEach(elemento => elemento.removeAttribute("disabled"));
-    contadorTurnos = 0;  
+    contadorTurnos = 0;
+    if (resetCounter) {
+        contJugadorA.innerHTML = 0;
+        contJugadorB.innerHTML = 0;
+    }
 }
 
+juego()
